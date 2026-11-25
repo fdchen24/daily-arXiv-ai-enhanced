@@ -8,13 +8,13 @@ TL;DR: {tldr}
 
 <details>
   <summary>Details</summary>
+任务背景: {task_background}
+
 Motivation: {motivation}
 
 Method: {method}
 
-Result: {result}
-
-Conclusion: {conclusion}
+实验效果: {result}
 
 Abstract: {summary}
 

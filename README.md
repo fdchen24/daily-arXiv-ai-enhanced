@@ -19,6 +19,7 @@ This innovative tool transforms how you stay updated with arXiv papers by combin
 🤖 **Smart AI Summarization**
 - Daily paper crawling with DeepSeek-powered summaries
 - Cost-effective: Only ~0.2 CNY per day
+- TL;DR plus four sections: 任务背景 (`task_background`), Motivation, Method, and 实验效果 (`result`). New summaries separate task context from research motivation and keep results to 1–2 sentences grounded in the abstract. Older summaries remain readable and exportable, with a missing-background notice until regenerated; their former Conclusion is not reused as background.
 
 💫 **Smart Reading Experience**
 - Personalized paper highlighting based on your interests

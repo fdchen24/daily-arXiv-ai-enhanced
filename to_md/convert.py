@@ -47,7 +47,8 @@ if __name__ == "__main__":
                     continue
                 
                 # Check if all required AI fields are present
-                required_fields = ['tldr', 'motivation', 'method', 'result', 'conclusion']
+                # Older summaries have no task_background; keep them exportable.
+                required_fields = ['tldr', 'motivation', 'method', 'result']
                 if not all(field in ai_data for field in required_fields):
                     print(f"Skipping item '{item.get('title', 'Unknown')}' due to incomplete AI fields")
                     continue
@@ -59,10 +60,10 @@ if __name__ == "__main__":
                         summary=item["summary"],
                         url=item['abs'],
                         tldr=ai_data.get('tldr', ''),
+                        task_background=ai_data.get('task_background') or '此条解读未单独提供任务背景。',
                         motivation=ai_data.get('motivation', ''),
                         method=ai_data.get('method', ''),
                         result=ai_data.get('result', ''),
-                        conclusion=ai_data.get('conclusion', ''),
                         cate=item['categories'][0],
                         idx=next(idx)
                     )

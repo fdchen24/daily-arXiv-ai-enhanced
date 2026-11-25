@@ -2,3 +2,12 @@ Please analyze the following abstract of papers.
 
 Content:
 {content}
+
+Return a concise structured analysis with exactly these fields:
+- tldr: a one-sentence overview
+- task_background: in 1-2 sentences, explain the task, practical context, inputs, outputs, and goal when available
+- motivation: explain the specific gap or limitation of existing work and why it motivates this paper; do not repeat the task background
+- method: explain the main approach, key steps, and how they address the gap
+- result: in 1-2 sentences, summarize the most important experimental findings, with benchmarks, comparisons, and numbers only when reported; if the abstract reports no experimental results, state this explicitly, then briefly describe any theoretical or qualitative evidence it does report
+
+Do not add a conclusion field. Keep each field concise, precise, and grounded only in the supplied abstract.

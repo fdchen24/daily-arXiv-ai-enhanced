@@ -118,10 +118,10 @@ def process_single_item(chain, item: Dict, language: str) -> Dict:
     # Default structure with meaningful fallback values
     default_ai_fields = {
         "tldr": "Summary generation failed",
+        "task_background": "Task background analysis unavailable",
         "motivation": "Motivation analysis unavailable",
         "method": "Method extraction failed",
-        "result": "Result analysis unavailable",
-        "conclusion": "Conclusion extraction failed"
+        "result": "Result analysis unavailable"
     }
     
     try:
@@ -147,7 +147,8 @@ def process_single_item(chain, item: Dict, language: str) -> Dict:
                 print(f"Failed to parse JSON for {item.get('id', 'unknown')}: {json_e}", file=sys.stderr)
         
         # Merge partial data with defaults to ensure all fields exist
-        item['AI'] = {**default_ai_fields, **partial_data}
+        item['AI'] = {field: partial_data.get(field, fallback)
+                      for field, fallback in default_ai_fields.items()}
         print(f"Using partial AI data for {item.get('id', 'unknown')}: {list(partial_data.keys())}", file=sys.stderr)
     except Exception as e:
         # Catch any other exceptions and provide default values
@@ -206,10 +207,10 @@ def process_all_items(data: List[Dict], model_name: str, language: str, max_work
                 processed_data[idx] = data[idx]
                 processed_data[idx]['AI'] = {
                     "tldr": "Processing failed",
+                    "task_background": "Processing failed",
                     "motivation": "Processing failed",
                     "method": "Processing failed",
-                    "result": "Processing failed",
-                    "conclusion": "Processing failed"
+                    "result": "Processing failed"
                 }
     
     return processed_data
